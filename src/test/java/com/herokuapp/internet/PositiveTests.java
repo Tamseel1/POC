@@ -1,5 +1,7 @@
 package com.herokuapp.internet;
 
+import org.testng.annotations.Test;
+import org.testng.AssertJUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -53,7 +55,7 @@ public class PositiveTests {
 		// logout button is visible
 
 		WebElement logout = driver.findElement(By.xpath("//a[@class='button secondary radius']"));
-		Assert.assertTrue(logout.isDisplayed(), "LogIn button is not visible");
+		AssertJUnit.assertTrue("LogIn button is not visible", logout.isDisplayed());
 
 		Thread.sleep(5000);
 
@@ -63,7 +65,7 @@ public class PositiveTests {
 
 		String ExpectedURL = "http://the-internet.herokuapp.com/secure";
 		String ActualURL = driver.getCurrentUrl();
-		Assert.assertEquals(ActualURL, ExpectedURL);
+		AssertJUnit.assertEquals(ActualURL, ExpectedURL);
 
 		// verification
 		// Success Message
@@ -71,7 +73,7 @@ public class PositiveTests {
 		WebElement SuccessMessage = driver.findElement(By.id("flash"));
 		String expectedSuccessMessage = "You logged into a secure area!";
 		String actualSuccessMessage = SuccessMessage.getText();
-		Assert.assertTrue(actualSuccessMessage.contains(expectedSuccessMessage), "Expected message is incorrect");
+		AssertJUnit.assertTrue("Expected message is incorrect", actualSuccessMessage.contains(expectedSuccessMessage));
 
 		Thread.sleep(2000);
 		
